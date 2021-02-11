@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-# --- Fetch FTXUI --------------------------------------------------------------
+# --- FTXUI --------------------------------------------------------------
 include(FetchContent)
 
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
-FetchContent_Declare(ftxui GIT_REPOSITORY https://github.com/ArthurSonzogni/ftxui)
+FetchContent_Declare(ftxui
+        GIT_REPOSITORY https://github.com/ArthurSonzogni/ftxui)
 
 FetchContent_GetProperties(ftxui)
 if(NOT ftxui_POPULATED)
@@ -16,7 +17,7 @@ endif()
 
 project(CryptoCalculator)
 
-add_executable(CryptoCalculator src/main.cpp)
+add_executable(CryptoCalculator src/main.cpp src/Ui.cpp src/CurrencyConverter.cpp src/DataProvider.cpp)
 
 target_include_directories(CryptoCalculator PRIVATE src)
 

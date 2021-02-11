@@ -1,38 +1,21 @@
-#include <iostream>
-#include "ftxui/dom/elements.hpp"
-#include "ftxui/screen/screen.hpp"
-#include "ftxui/screen/string.hpp"
+#include <thread>
+#include "Ui.cpp"
 
-int main() {
-    using namespace ftxui;
+int main(int argc, const char* argv[]) {
+    auto screen = ScreenInteractive::FitComponent();
 
-    auto summary = [&] {
-        auto content = vbox({
-            hbox({text(L"- done:   "), text(L"3") | bold}) | color(Color::Green),
-            hbox({text(L"- active: "), text(L"2") | bold}) | color(Color::RedLight),
-            hbox({text(L"- queue:  "), text(L"9") | bold}) | color(Color::Red),
-        });
-        return window(text(L" Summary "), content);
-    };
-
-    auto document =  //
-        vbox({
-            hbox({
-                summary(),
-                summary(),
-                summary() | flex,
-            }),
-        summary(),
-        summary(),
+    std::thread update([&screen]() {
+        while (true) {
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(0.05s);
+            screen.PostEvent(Event::Custom);
+        }
     });
 
-    // Limit the size of the document to 80 char.
-    document = document | size(WIDTH, LESS_THAN, 80);
+    DataProvider dp;
+    auto cc = new CurrencyConverter(dp);
+    auto *ui = new Ui(cc);
+    screen.Loop(ui);
 
-    auto screen = Screen::Create(Dimension::Full(), Dimension::Fit(document));
-    Render(screen, document);
-
-    std::cout << screen.ToString() << std::endl;
-
-    return EXIT_SUCCESS;
+    return 0;
 }
