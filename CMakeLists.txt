@@ -13,18 +13,41 @@ if(NOT ftxui_POPULATED)
     add_subdirectory(${ftxui_SOURCE_DIR} ${ftxui_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
+# --- nlohmann_json --------------------------------------------------------------
+FetchContent_Declare(json
+        GIT_REPOSITORY https://github.com/nlohmann/json.git
+        GIT_TAG v3.7.3)
+
+FetchContent_GetProperties(json)
+if(NOT json_POPULATED)
+    FetchContent_Populate(json)
+    add_subdirectory(${json_SOURCE_DIR} ${json_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
+
+# --- libcurl --------------------------------------------------------------
+#find_package(PkgConfig REQUIRED)
+#pkg_check_modules(libcurl REQUIRED IMPORTED_TARGET libcurl)
+
+include(FindPkgConfig)
+pkg_check_modules(CURL libcurl REQUIRED)
+include_directories(
+        SYSTEM ${CURL_INCLUDE_DIRS}
+        )
+
 # ------------------------------------------------------------------------------
 
 project(CryptoCalculator)
 
-add_executable(CryptoCalculator src/main.cpp src/Ui.cpp src/CurrencyConverter.cpp src/DataProvider.cpp)
+add_executable(CryptoCalculator src/main.cpp)
 
 target_include_directories(CryptoCalculator PRIVATE src)
 
 target_link_libraries(CryptoCalculator
         PRIVATE ftxui::screen
         PRIVATE ftxui::dom
-        PRIVATE ftxui::component # Not needed for this example.
+        PRIVATE ftxui::component
+        nlohmann_json::nlohmann_json
+        ${CURL_LIBRARIES}
         )
 
 # C++17 is used. We requires fold expressions at least.

@@ -20,8 +20,8 @@ class Ui : public Component {
     CurrencyConverter *converter;
     float entered_amount = 0;
     float result_amount = 0;
-    std::wstring selected_from_currency = L"USD";
-    std::wstring selected_to_currency = L"USD";
+    std::wstring selected_from_currency = L"UAH";
+    std::wstring selected_to_currency = L"UAH";
 
 public:
     Ui(CurrencyConverter *c) {
@@ -99,8 +99,8 @@ public:
                 input_win | size(WIDTH, EQUAL, 60) | size(HEIGHT, LESS_THAN, 4),
             }),
             hbox({
-                from_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 10),
-                to_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 10),
+                from_win | size(WIDTH, EQUAL, 16) | size(HEIGHT, LESS_THAN, 20),
+                to_win | size(WIDTH, EQUAL, 16) | size(HEIGHT, LESS_THAN, 20),
             }),
             window(text(L" Результат "),
             hbox({
