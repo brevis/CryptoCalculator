@@ -47,8 +47,7 @@ public:
         input_container.Add(&input);
 
         Rate *rates = converter->GetAvailableCurrenciesRates();
-        for (int i = 0; i < 100; i++)
-        {
+        for (int i = 0; i < 100; i++) {
             Rate rate = rates[i];
             if (rate.currency.empty()) break;
             from.entries.push_back(rate.currency);
@@ -78,13 +77,13 @@ public:
         auto to_win = window(text(L" В "), to.Render() | frame) | color(Color::GreenLight);
 
         auto input_win = window(text(L" Количество "),
-        hbox({
-            vbox({
-                hbox({
-                    input_add.Render(),
-                }) | size(WIDTH, EQUAL, 20) | size(HEIGHT, EQUAL, 1),
-            })
-        }));
+                                hbox({
+                                             vbox({
+                                                          hbox({
+                                                                       input_add.Render(),
+                                                               }) | size(WIDTH, EQUAL, 20) | size(HEIGHT, EQUAL, 1),
+                                                  })
+                                     }));
 
         focus(input_win);
 
@@ -95,41 +94,42 @@ public:
         sprintf(result_buffer, "%.4f", result_amount);
 
         return vbox({
-            vbox({
-                input_win | size(WIDTH, EQUAL, 60) | size(HEIGHT, LESS_THAN, 4),
-            }),
-            hbox({
-                from_win | size(WIDTH, EQUAL, 16) | size(HEIGHT, LESS_THAN, 20),
-                to_win | size(WIDTH, EQUAL, 16) | size(HEIGHT, LESS_THAN, 20),
-            }),
-            window(text(L" Результат "),
-            hbox({
-                    vbox({
-                        hbox({
-                            text(stringToWstring(entered_buffer)) |
-                            color(Color::BlueLight),
-                            text(L" " + selected_from_currency) |
-                            color(Color::BlueLight),
-                            text(L" = "),
-                            text(stringToWstring(result_buffer)) | color(Color::GreenLight),
-                            text(L" " + selected_to_currency) |
-                            color(Color::GreenLight),
-                        }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1),
-                    }),
-                })
-            ) | color(Color::RedLight),
-            window(text(L" *** РЕКЛАМА *** "),
-        vbox({
-                    hbox({
-                        text(L"Зарабатывай на бирже:"),
-                    }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1),
-                    hbox({
-                        text(L"https://kuna.io/?r=kunaid-duob8z1cegq5") |
-                        color(Color::Blue),
-                    }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1)
-                })
-            ) | color(Color::Yellow)
-        }) | flex_grow | border;
+                            vbox({
+                                         input_win | size(WIDTH, EQUAL, 60) | size(HEIGHT, LESS_THAN, 4),
+                                 }),
+                            hbox({
+                                         from_win | size(WIDTH, EQUAL, 14) | size(HEIGHT, LESS_THAN, 17),
+                                         to_win | size(WIDTH, EQUAL, 14) | size(HEIGHT, LESS_THAN, 17),
+                                 }),
+                            window(text(L" Результат "),
+                                   hbox({
+                                                vbox({
+                                                             hbox({
+                                                                          text(stringToWstring(entered_buffer)) |
+                                                                          color(Color::BlueLight),
+                                                                          text(L" " + selected_from_currency) |
+                                                                          color(Color::BlueLight),
+                                                                          text(L" = "),
+                                                                          text(stringToWstring(result_buffer)) |
+                                                                          color(Color::GreenLight),
+                                                                          text(L" " + selected_to_currency) |
+                                                                          color(Color::GreenLight),
+                                                                  }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1),
+                                                     }),
+                                        })
+                            ) | color(Color::RedLight),
+                            window(text(L" *** РЕКЛАМА *** "),
+                                   vbox({
+                                                hbox({
+                                                             text(L"Зарабатывай на бирже:"),
+                                                     }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1),
+                                                hbox({
+                                                             text(L"https://kuna.io/?r=kunaid-duob8z1cegq5") |
+                                                             color(Color::Blue),
+                                                     }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1)
+                                        })
+                            ) | color(Color::Yellow)
+                    }) | flex_grow | border;
     }
 
     std::wstring stringToWstring(const std::string &t_str) {

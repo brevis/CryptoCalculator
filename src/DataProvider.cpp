@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "curl/curl.h"
+#include <fstream>
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
@@ -11,29 +11,12 @@ struct Rate {
     bool base;
 };
 
-size_t WriteCallback(char *contents, size_t size, size_t nmemb, void *userp)
-{
-    ((std::string*)userp)->append((char*)contents, size * nmemb);
-    return size * nmemb;
-}
-
 class DataProvider {
     struct Rate rates[100];
 public:
     DataProvider() {
-        std::string readBuffer;
-
-        curl_global_init(CURL_GLOBAL_ALL);
-        CURL* curl = curl_easy_init();
-        curl_easy_setopt(curl, CURLOPT_URL, "https://api.kuna.io/v3/exchange-rates");
-        curl_easy_setopt(curl, CURLOPT_VERBOSE, 0L);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-        curl_easy_perform(curl);
-        curl_easy_cleanup(curl);
-
-        json resp = json::parse(readBuffer);
-
+        std::string output = exec("curl --silent https://api.kuna.io/v3/exchange-rates");
+        json resp = json::parse(output);
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
         int i = 0;
@@ -52,8 +35,18 @@ public:
         }
     }
 
-    Rate* GetRates()
-    {
+    Rate *GetRates() {
         return rates;
+    }
+
+    std::string exec(const std::string &command) {
+        system((command + " > temp.txt").c_str());
+        std::ifstream ifs("temp.txt");
+        std::string ret{std::istreambuf_iterator<char>(ifs), std::istreambuf_iterator<char>()};
+        ifs.close();
+        if (std::remove("temp.txt") != 0) {
+            perror("Error deleting temporary file");
+        }
+        return ret;
     }
 };

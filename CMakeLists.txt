@@ -24,16 +24,6 @@ if(NOT json_POPULATED)
     add_subdirectory(${json_SOURCE_DIR} ${json_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-# --- libcurl --------------------------------------------------------------
-#find_package(PkgConfig REQUIRED)
-#pkg_check_modules(libcurl REQUIRED IMPORTED_TARGET libcurl)
-
-include(FindPkgConfig)
-pkg_check_modules(CURL libcurl REQUIRED)
-include_directories(
-        SYSTEM ${CURL_INCLUDE_DIRS}
-        )
-
 # ------------------------------------------------------------------------------
 
 project(CryptoCalculator)

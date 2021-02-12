@@ -1,7 +1,7 @@
 #include <thread>
 #include "Ui.cpp"
 
-int main(int argc, const char* argv[]) {
+int main(int argc, const char *argv[]) {
     auto screen = ScreenInteractive::FitComponent();
 
     std::thread update([&screen]() {
