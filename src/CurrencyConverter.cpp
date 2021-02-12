@@ -21,7 +21,10 @@ public:
         std::wstring base_currency;
         for (int i = 0; i < 100; i++) {
             Rate rate = rates[i];
-            if (rate.base) base_currency = rate.base;
+            if (rate.base) {
+                base_currency = rate.base;
+                break;
+            }
             if (rate.currency.empty()) break;
         }
 
@@ -41,7 +44,7 @@ public:
         for (int i = 0; i < 100; i++) {
             Rate rate = rates[i];
             if (rate.currency == to) {
-                res = amount_in_base * amount / rate.rate;
+                res = amount_in_base / rate.rate;
                 break;
             }
             if (rate.currency.empty()) break;
