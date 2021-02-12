@@ -8,7 +8,7 @@ using json = nlohmann::json;
 struct Rate {
     std::wstring currency;
     float rate;
-    bool base;
+    double_t base;
 };
 
 class DataProvider {

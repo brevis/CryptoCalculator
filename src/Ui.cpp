@@ -18,8 +18,8 @@ class Ui : public Component {
     Menu input;
 
     CurrencyConverter *converter;
-    float entered_amount = 0;
-    float result_amount = 0;
+    double_t entered_amount = 0;
+    double_t result_amount = 0;
     std::wstring selected_from_currency = L"UAH";
     std::wstring selected_to_currency = L"UAH";
 
@@ -34,7 +34,7 @@ public:
 
         input_add.on_change = [this] {
             try {
-                entered_amount = stof(input_add.content);
+                entered_amount = stold(input_add.content);
             } catch (std::exception e) {
                 entered_amount = 0;
             }
@@ -98,8 +98,31 @@ public:
                                          input_win | size(WIDTH, EQUAL, 60) | size(HEIGHT, LESS_THAN, 4),
                                  }),
                             hbox({
-                                         from_win | size(WIDTH, EQUAL, 14) | size(HEIGHT, LESS_THAN, 17),
-                                         to_win | size(WIDTH, EQUAL, 14) | size(HEIGHT, LESS_THAN, 17),
+                                         from_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 17),
+                                         to_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 17),
+                                         window(text(L" *** РЕКЛАМА *** "),
+                                                vbox({
+                                                             hbox({
+                                                                          text(L"          Зарабатывай на бирже         ") | bgcolor(Color::White)  | color(Color::Blue)
+                                                                  }) | size(WIDTH, EQUAL, 40) | size(HEIGHT, EQUAL, 1),
+                                                             hbox({text(L"     ▄▄▄▄▄▄▄  ▄  ▄  ▄  ▄▄  ▄▄▄▄▄▄▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █ ▄▄▄ █ ▄▄█▀█▀ █▀▀ █  █ ▄▄▄ █     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █ ███ █  ▀█▀   █ ▄█▄  █ ███ █     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █▄▄▄▄▄█ ▄▀▄ ▄▀█▀█▀▄▀█ █▄▄▄▄▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄▄▄ ▄▄▄▄█▀█▄▀▀█▀██▀▀▀▄▄   ▄       ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄█▀▀▄█▄▄▄▄▀▀ ▄  ▀▀  ▀█▀█▄▀▄▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄ ▄▄▄ ▄    ▀▄   ▄█▄▄▄██▀ ▄ █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄ █ ▄█▄▄██ ██▀▄ ▀   ▀▀▀  █ ▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄█▀▄ ▄▄▀▀▄█▄▀▀█▀ █▀█▀▄▄ ▀█ █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄ ███▀▄ ▄▄ ▀ ▄▀ ▄▀  ▄█▀▄▄▀▀▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄▀▄▀ ▀▄▀▄▀▄▀▄  ▄ █  ▄▄█▄▄▀ ▀      ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     ▄▄▄▄▄▄▄ █ ███▀▄ █▀▀▄█ ▄ █▄▀██     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █ ▄▄▄ █ █ ▄▄▀▀██ █▀ █▄▄▄█▀ ██     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █ ███ █ ▄▄ ▀ ▄▀ ▄▄ ▄▀▀ ▄█▄▀▀█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"     █▄▄▄▄▄█ █  ▀▄   ▄█▀ █▄▀ ▀  █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                             hbox({text(L"                                       ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                     })
+                                         ) | color(Color::Yellow)
                                  }),
                             window(text(L" Результат "),
                                    hbox({
@@ -118,18 +141,7 @@ public:
                                                      }),
                                         })
                             ) | color(Color::RedLight),
-                            window(text(L" *** РЕКЛАМА *** "),
-                                   vbox({
-                                                hbox({
-                                                             text(L"Зарабатывай на бирже:"),
-                                                     }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1),
-                                                hbox({
-                                                             text(L"https://kuna.io/?r=kunaid-duob8z1cegq5") |
-                                                             color(Color::Blue),
-                                                     }) | size(WIDTH, EQUAL, 60) | size(HEIGHT, EQUAL, 1)
-                                        })
-                            ) | color(Color::Yellow)
-                    }) | flex_grow | border;
+                    }) | color(Color::White) | flex_grow | border;
     }
 
     std::wstring stringToWstring(const std::string &t_str) {
@@ -137,4 +149,5 @@ public:
         std::wstring_convert<convert_type, wchar_t> converter;
         return converter.from_bytes(t_str);
     }
+
 };

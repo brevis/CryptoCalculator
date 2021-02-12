@@ -12,7 +12,7 @@ public:
         return dataProvider.GetRates();
     }
 
-    float convert(float amount, std::wstring from, std::wstring to) {
+    double_t convert(float amount, std::wstring from, std::wstring to) {
         // TODO: optimize this
 
         Rate *rates = GetAvailableCurrenciesRates();
