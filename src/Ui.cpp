@@ -98,29 +98,29 @@ public:
                                          input_win | size(WIDTH, EQUAL, 60) | size(HEIGHT, LESS_THAN, 4),
                                  }),
                             hbox({
-                                         from_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 17),
-                                         to_win | size(WIDTH, EQUAL, 10) | size(HEIGHT, LESS_THAN, 17),
+                                         from_win | size(WIDTH, EQUAL, 12) | size(HEIGHT, LESS_THAN, 17),
+                                         to_win | size(WIDTH, EQUAL, 12) | size(HEIGHT, LESS_THAN, 17),
                                          window(text(L" *** РЕКЛАМА *** "),
                                                 vbox({
                                                              hbox({
-                                                                          text(L"          Зарабатывай на бирже         ") | bgcolor(Color::White)  | color(Color::Blue)
-                                                                  }) | size(WIDTH, EQUAL, 40) | size(HEIGHT, EQUAL, 1),
-                                                             hbox({text(L"     ▄▄▄▄▄▄▄  ▄  ▄  ▄  ▄▄  ▄▄▄▄▄▄▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █ ▄▄▄ █ ▄▄█▀█▀ █▀▀ █  █ ▄▄▄ █     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █ ███ █  ▀█▀   █ ▄█▄  █ ███ █     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █▄▄▄▄▄█ ▄▀▄ ▄▀█▀█▀▄▀█ █▄▄▄▄▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄▄▄ ▄▄▄▄█▀█▄▀▀█▀██▀▀▀▄▄   ▄       ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄█▀▀▄█▄▄▄▄▀▀ ▄  ▀▀  ▀█▀█▄▀▄▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄ ▄▄▄ ▄    ▀▄   ▄█▄▄▄██▀ ▄ █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄ █ ▄█▄▄██ ██▀▄ ▀   ▀▀▀  █ ▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄█▀▄ ▄▄▀▀▄█▄▀▀█▀ █▀█▀▄▄ ▀█ █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄ ███▀▄ ▄▄ ▀ ▄▀ ▄▀  ▄█▀▄▄▀▀▄█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄▀▄▀ ▀▄▀▄▀▄▀▄  ▄ █  ▄▄█▄▄▀ ▀      ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     ▄▄▄▄▄▄▄ █ ███▀▄ █▀▀▄█ ▄ █▄▀██     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █ ▄▄▄ █ █ ▄▄▀▀██ █▀ █▄▄▄█▀ ██     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █ ███ █ ▄▄ ▀ ▄▀ ▄▄ ▄▀▀ ▄█▄▀▀█     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"     █▄▄▄▄▄█ █  ▀▄   ▄█▀ █▄▀ ▀  █▄     ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
-                                                             hbox({text(L"                                       ") | bgcolor(Color::White) | color(Color::Black), }) | size(WIDTH, EQUAL, 40),
+                                                                          text(L"        Зарабатывай на бирже       ") | bgcolor(Color::White)  | color(Color::Blue)
+                                                                  }) | size(WIDTH, EQUAL, 36) | size(HEIGHT, EQUAL, 1),
+                                                             hbox({text(L"   ▄▄▄▄▄▄▄  ▄  ▄  ▄  ▄▄  ▄▄▄▄▄▄▄   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █ ▄▄▄ █ ▄▄█▀█▀ █▀▀ █  █ ▄▄▄ █   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █ ███ █  ▀█▀   █ ▄█▄  █ ███ █   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █▄▄▄▄▄█ ▄▀▄ ▄▀█▀█▀▄▀█ █▄▄▄▄▄█   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄▄▄ ▄▄▄▄█▀█▄▀▀█▀██▀▀▀▄▄   ▄     ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄█▀▀▄█▄▄▄▄▀▀ ▄  ▀▀  ▀█▀█▄▀▄▄█   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄ ▄▄▄ ▄    ▀▄   ▄█▄▄▄██▀ ▄ █▄   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄ █ ▄█▄▄██ ██▀▄ ▀   ▀▀▀  █ ▄█   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄█▀▄ ▄▄▀▀▄█▄▀▀█▀ █▀█▀▄▄ ▀█ █▄   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄ ███▀▄ ▄▄ ▀ ▄▀ ▄▀  ▄█▀▄▄▀▀▄█   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄▀▄▀ ▀▄▀▄▀▄▀▄  ▄ █  ▄▄█▄▄▀ ▀    ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   ▄▄▄▄▄▄▄ █ ███▀▄ █▀▀▄█ ▄ █▄▀██   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █ ▄▄▄ █ █ ▄▄▀▀██ █▀ █▄▄▄█▀ ██   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █ ███ █ ▄▄ ▀ ▄▀ ▄▄ ▄▀▀ ▄█▄▀▀█   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"   █▄▄▄▄▄█ █  ▀▄   ▄█▀ █▄▀ ▀  █▄   ") | bgcolor(Color::White) | color(Color::Black), }),
+                                                             hbox({text(L"                                   ") | bgcolor(Color::White) | color(Color::Black), }),
                                                      })
                                          ) | color(Color::Yellow)
                                  }),
@@ -141,7 +141,7 @@ public:
                                                      }),
                                         })
                             ) | color(Color::RedLight),
-                    }) | color(Color::White) | flex_grow | border;
+                    }) | border;
     }
 
     std::wstring stringToWstring(const std::string &t_str) {
