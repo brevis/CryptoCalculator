@@ -1,7 +1,8 @@
-#include <iostream>
-#include <string>
-#include <fstream>
 #include "nlohmann/json.hpp"
+#include <fstream>
+#include <iostream>
+#include <locale>
+#include <string>
 
 using json = nlohmann::json;
 
